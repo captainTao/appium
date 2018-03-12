@@ -37,6 +37,8 @@ git clone https://github.com/facebook/WebDriverAgent.git
 refer to :
 https://www.cnblogs.com/dashengios/p/5391076.html
 如何动态获取ios工程的Bundle version版本号，bundleID，appName
+
+
 获取 bundle version版本号
 +(NSString*) getLocalAppVersion
 {
