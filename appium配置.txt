@@ -1,0 +1,57 @@
+refer to :
+https://mp.weixin.qq.com/s/dHcOoWCJvn7VnJXgecbD4A
+
+环境错误：xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
+
+1. xcode-select --install ＃如果你还没有安装命令行工具。
+sudo xcode-select --switch / Library / Developer / CommandLineTools ＃启用命令行工具
+
+2. 安装Xcode
+3. 跑 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+
+校验appium服务可用：
+xcodebuild -project /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination id=设备UDID test
+
+
+server的webdriver路径：
+/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+
+桌面版本webdriver路径：
+
+/Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+
+
+
+webdriver出问题了：
+删除原来的webdriver
+webdriver目录下clone webdriver
+git clone https://github.com/facebook/WebDriverAgent.git
+./Scripts/bootstrap.sh
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+refer to :
+https://www.cnblogs.com/dashengios/p/5391076.html
+如何动态获取ios工程的Bundle version版本号，bundleID，appName
+获取 bundle version版本号
++(NSString*) getLocalAppVersion
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+ 获取BundleID
++(NSString*) getBundleID
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+}
+ 获取app的名字
++(NSString*) getAppName
+{
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    NSMutableString *mutableAppName = [NSMutableString stringWithString:appName];
+}
+
+
