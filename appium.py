@@ -126,6 +126,29 @@ https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps
 
 
 
+#!usr/bin/env python
+
+import os
+
+def get_desired_capability():
+    desired_caps = {
+        'platformVersion': '9.3',
+        'platformName': 'iOS',
+        'deviceName': 'iphone', # instruments -s devices获取
+        'automationName': 'XCUITest',
+        # 'bundleId': 'com.pg.test.AutoTest',
+        # 'bundleId': 'com.pg.demo',
+        'bundleId': 'com.pinguo.camera360',
+        'udid': '91a0298eab5da902d39a2bf2f7a859f03c0c38f0'
+        # 'udid': '91734038d675ddd6b24345f29a50d9acb5640966'
+    }
+
+    return desired_caps
+
+def get_uri():
+    return 'http://0.0.0.0:4723/wd/hub'
+
+
 
 
 '''
@@ -473,7 +496,7 @@ TouchAction(driver).press(x=0,y=308).release().perform()
 
 # 2.长按控件:
 
-longPress(WebElement el, int x, int y, Duration duration)
+# longPress(WebElement el, int x, int y, Duration duration)
 # duration以毫秒为单位。1000表示按一秒钟。其用法与press()方法相同。duration:按压时间，单位毫秒
 
 TouchAction action = new TouchAction(driver);
@@ -483,7 +506,7 @@ action.longPress(1 ,302,1000).perform().release();
 
 
 # 3.点击控件：
-tap(WebElement el, int x, int y)
+# tap(WebElement el, int x, int y)
 # 用法参考press()
 
 TouchAction action = new TouchAction(driver);
@@ -515,7 +538,7 @@ action.wait(1000);
 #---------------------------appium API 之其他操作---------------------------#
 
 # 1、熄屏
-.lockDevice()
+# .lockDevice()
 # 在iOS设备可以设置熄屏一段时间。Android上面不带参数，所以熄屏之后就不会再点亮屏幕了。
 driver.lockDevice(1000);  // iOS，可以带参数
 driver.lockDriice();   //Android, 不带参数
@@ -524,7 +547,7 @@ driver.lockDriice();   //Android, 不带参数
 
 # 2、当前Activity（Android only）
 # 得到当前应用的activity。只适用于Android。 例（通讯录）：
-currentActivity()
+# currentActivity()
 
 String ca = driver.currentActivity();
 System.out.print(ca);
@@ -535,7 +558,7 @@ System.out.print(ca);
 
 
 # 3、收起键盘
-hideKeyboard()
+# hideKeyboard()
 # 收起键盘，这个方法很有用，当我们对一个输入框输入完成后，需要将键盘收起，再切换到一下输入框进行输入
 
 driver.hideKeyboard();  //收起键盘
